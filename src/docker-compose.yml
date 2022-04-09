@@ -1,8 +1,27 @@
 version: '3.4'
 
 services:
-  catalog.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
+
+
+  basketdb:
+     image: redis:alpine    
+
+  portainer:
+    image: portainer/portainer-ce
+
+  #catalog.api:
+  #  image: ${DOCKER_REGISTRY-}catalogapi
+  #  build:
+  #    context: .
+  #    dockerfile: Services/Catalog/Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+      dockerfile: services/Basket/Basket.API/Dockerfile
+
+volumes:
+ portainer_data:
+
+    
